@@ -1,0 +1,16 @@
+[Unit]
+Description=Resticly prune trigger
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+Environment="RESTICLY_DEBUG=true"
+ExecStartPre=%h/.local/bin/resticly %i forget
+ExecStart=%h/.local/bin/resticly %i %j
+ExecStartPost=%h/.local/bin/resticly %i check
+Restart=on-failure
+RestartSec=4h
+
+[Install]
+WantedBy=default.target

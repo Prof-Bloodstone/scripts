@@ -1,0 +1,16 @@
+[Unit]
+Description=Schedule a backup every day
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+# Execute job if it missed a run due to machine being off
+Persistent=true
+# Delay in seconds after boot for the first time
+OnBootSec=300
+OnCalendar=daily
+RandomizedDelaySec=40m
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

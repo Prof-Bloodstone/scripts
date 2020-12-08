@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  znc:
+    image: znc:1.8.2
+    container_name: znc
+    user: "1000"
+    ports:
+      - "${ZNC_PORT:-666}:6666"
+    volumes:
+      - './znc-data:/znc-data:rw'
+
+
