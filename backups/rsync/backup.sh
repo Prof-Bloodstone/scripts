@@ -70,7 +70,7 @@ full_args=(
 
 if [ -e "${latest_backup}" ]; then
   if [ -L "${latest_backup}" ]; then
-    print "Exisitng backups found - will use hardlinks"
+    print "Existing backups found - will use hardlinks"
     full_args+=( --link-dest="${latest_backup}" )
   else
     print "ERROR: ${latest_backup} exists and is not a symlink!"
